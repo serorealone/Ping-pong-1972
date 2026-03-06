@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Classic 1972</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <div id="ui-layer">
+            <div id="p1-score">0</div>
+            <div id="p2-score">0</div>
+        </div>
+        <canvas id="pong-canvas" width="640" height="480"></canvas>
+        <div id="overlay">
+            <h1 id="winner-text"></h1>
+            <p id="restart-hint">Press F5 to Restart</p>
+        </div>
+        <!-- CRT Overlay effect -->
+        <div class="crt-overlay"></div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

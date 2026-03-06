@@ -1,0 +1,134 @@
+/*
+    Pong Classic 1972 - CSS Styles
+    Premium Retro Aesthetic
+*/
+
+:root {
+    --bg-color: #000000;
+    --fg-color: #ffffff;
+    --accent-color: #ffffff;
+    --crt-line-opacity: 0.1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+}
+
+#game-container {
+    position: relative;
+    width: 640px;
+    height: 480px;
+    border: 4px solid var(--fg-color);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    background-color: var(--bg-color);
+    overflow: hidden;
+}
+
+#pong-canvas {
+    background-color: var(--bg-color);
+    display: block;
+}
+
+/* UI Layer for Scores */
+#ui-layer {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#p1-score, #p2-score {
+    font-size: 60px;
+    color: var(--fg-color);
+    text-shadow: 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Win/Overlay screen */
+#overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: none; /* Shown via JS */
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border: 2px solid white;
+}
+
+#winner-text {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#restart-hint {
+    font-size: 14px;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* CRT Overlay Effect */
+.crt-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 30;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.2) 50%
+    ),
+    linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.03),
+        rgba(0, 255, 0, 0.01),
+        rgba(0, 0, 255, 0.03)
+    );
+    background-size: 100% 4px, 3px 100%;
+}
+
+.crt-overlay::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0.1;
+    z-index: 2;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.1; }
+    50% { opacity: 0.08; }
+    100% { opacity: 0.12; }
+}
